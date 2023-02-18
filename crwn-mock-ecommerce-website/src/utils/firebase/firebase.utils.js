@@ -45,7 +45,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
             displayName, 
             email, 
             createdAt,
-            ...additionalInformation
+            ...additionalInformation,
            }); 
         } catch(error){
             console.log('error creating the user', error.message);
@@ -57,5 +57,5 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 export const createAuthUserWithEmailAndPassword = async (email, password) => { 
     if(!email || !password) return; 
 
-    createUserWithEmailAndPassword(auth, email, password)
+   return await createUserWithEmailAndPassword(auth, email, password)
 }
