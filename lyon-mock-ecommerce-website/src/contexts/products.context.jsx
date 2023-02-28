@@ -1,14 +1,24 @@
-import { createContext, useState } from 'react'; 
-import PRODUCTS from '../shopData.json'; 
-
+import { createContext, useState, useEffect } from 'react'; 
+import { addCollectionAndDocuments } from '../utils/firebase/firebase.utils.js';
 export const ProductsContext = createContext({
     products: [], 
 }); 
 
+
+
 export const ProductsProvider = ({children}) => {
-    const [products, setProducts] = useState(PRODUCTS); 
+    const [products, setProducts] = useState([]);
+
     const value = {products}; 
     return (
         <ProductsContext.Provider value={value}> {children} </ProductsContext.Provider>
     )
-}
+};
+
+
+    //!COMMENTED OUT TO ONLY BE DONE ONCE. ALREADY RAN AND DONT WANT IT TO RUN AGAIN. 
+    // import SHOP_DATA from '../shop-data.js'; 
+
+    // useEffect(() => {
+    //     addCollectionAndDocuments('categories', SHOP_DATA); 
+    // }, []);
