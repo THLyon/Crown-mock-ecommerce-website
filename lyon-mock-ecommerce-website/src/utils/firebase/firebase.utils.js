@@ -1,6 +1,25 @@
 import { initializeApp } from 'firebase/app'; 
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatc, query, getDocs } from 'firebase/firestore';
+import { 
+    getAuth, 
+    signInWithRedirect, 
+    signInWithPopup,
+    GoogleAuthProvider, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    signOut, 
+    onAuthStateChanged 
+} from 'firebase/auth';
+
+import { 
+    getFirestore,
+    doc, 
+    getDoc, 
+    setDoc, 
+    collection, 
+    writeBatch, 
+    query, 
+    getDocs 
+} from 'firebase/firestore';
 
 //* Your web app's Firebase configuration
 const firebaseConfig = {
@@ -52,7 +71,9 @@ export const getCategoriesAndDocuments = async () => {
         acc[title.toLowerCase()] = items; 
         return acc; 
     }, {}); 
-}
+
+    return categoryMap; 
+}; 
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
     //if we dont get a userAuth, exit function; Protection layer; 
