@@ -1,7 +1,8 @@
 import {useState } from 'react'; 
+// import { useDispatch } from 'react-redux';
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 import {SignInContainer, AlreadyH2, ButtonsContainer} from './sign-in-form.styles';
 
@@ -73,7 +74,7 @@ const SignInForm = () => {
                 />
                 <ButtonsContainer>
                 <Button type='submit'> Sign In</Button>
-                <Button type='button' buttonType='google' onClick={signInWithGoogle}> Google sign in</Button>  
+                <Button type='button' buttonType= {BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}> Google sign in</Button>  
                 </ButtonsContainer>
                 
             </form>
